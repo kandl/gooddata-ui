@@ -6,6 +6,15 @@ id: dashboard_view_component
 ---
 
 The **DashboardView component** is a generic component that renders dashboards created and saved by KPI Dashboards.
+It allows you to embed the dashboard natively in React _in view mode_ (similarly to [InsightView](10_vis__insight_view.md) for visualizations).
+
+It also provides mechanisms to allow you to integrate it with the rest of your application.
+For example, you can provide your custom filtering UI (see [Integration with your application](#integration-with-your-application)).
+The users with the appropriate permissions can also set [KPI Alerts](#kpi-alerts) and create [Scheduled emails](#scheduled-emails) (unless you enable [Read-only mode](#read-only-mode)).
+
+You can also customize the way the dashboard is rendered – you can alter the layout and change the way particular widgets are rendered and more (see [Customizations](#customizations)).
+
+**NOTE**: Any customizations made to the dashboard rendering will not be reflected in PDF exports and emails.
 
 ## Structure
 
@@ -165,7 +174,7 @@ clearDashboardViewCaches();
 | disableThemeLoading          | false     | boolean                                          | If `true`, DashboardView will not try to load Theme from the backend                                                                              |
 | ErrorComponent               | false     | Component                                        | A component to be rendered if this component (or any of the widgets) is in error state (see [ErrorComponent](15_props__error_component.md))       |
 | LoadingComponent             | false     | Component                                        | A component to be rendered if this component (or any of the widgets) is in loading state (see [LoadingComponent](15_props__loading_component.md)) |
-| onDashboardLoaded            | false     | Function                                         | Called when the data for the dashboard is loaded (see [Integration with your application](#integration-with-your-application)                     |
+| onDashboardLoaded            | false     | Function                                         | Called when the data for the dashboard is loaded (see [Integration with your application](#integration-with-your-application))                    |
 | onError                      | false     | Function                                         | Called in case of any error, either in the dashboard loading or any of the widgets execution.                                                     |
 | isScheduledMailDialogVisible | false     | boolean                                          | If `true`, dialog for Scheduled emails will be displayed (defaults to `false`)                                                                    |
 | applyFiltersToScheduledMail  | false     | boolean                                          | Specifies if Scheduled email should use filters from `filters` prop (see [Scheduled emails](#scheduled-emails))                                   |
