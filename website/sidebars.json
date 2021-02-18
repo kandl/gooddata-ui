@@ -41,6 +41,7 @@
       "table_component",
       "treemap_component",
       "visualization_component",
+      "dashboard_view_component",
       "attribute_filter_component",
       "date_filter_component",
       "measure_value_filter_component",

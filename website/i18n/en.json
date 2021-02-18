@@ -85,6 +85,10 @@
         "title": "Combo Chart",
         "sidebar_label": "Combo Chart"
       },
+      "dashboard_view_component": {
+        "title": "DashboardView",
+        "sidebar_label": "DashboardView"
+      },
       "date_filter_component": {
         "title": "Date Filter",
         "sidebar_label": "Date Filter"
