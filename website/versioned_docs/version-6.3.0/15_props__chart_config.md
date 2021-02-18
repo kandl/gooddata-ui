@@ -57,9 +57,9 @@ This article describes the options for configuring a chart.
 ## Configure colors
 
 To configure colors, use the following options:
-* [Color array (the `colors` property)](#Color-array)
-* [Custom color palette (the `colorPalette` property)](#Custom-color-palette)
-* [Color mapping (the `colorMapping` property)](#Color-mapping)
+* [Color array (the `colors` property)](#color-array)
+* [Custom color palette (the `colorPalette` property)](#custom-color-palette)
+* [Color mapping (the `colorMapping` property)](#color-mapping)
 
 If you have more than one option configured for a visualization, the following rules apply:
 * The `colors` property overrides a custom color palette uploaded through the API.
@@ -105,7 +105,7 @@ import { Visualization } from '@gooddata/react-components';
 
 Within one visualization:
 * The `colors` property overrides a custom color palette uploaded through the API.
-* The `colors` property can be overriden by the [`colorPalette` property](#Custom-color-palette) or the [`colorMapping` property](#Color-mapping).
+* The `colors` property can be overriden by the [`colorPalette` property](#custom-color-palette) or the [`colorMapping` property](#color-mapping).
 
 ### Custom color palette
 
@@ -306,13 +306,13 @@ import { Visualization } from '@gooddata/react-components';
     * [Area charts](10_vis__area_chart_component.md)
     * [Bar charts](10_vis__bar_chart_component.md)
     * [Column charts](10_vis__column_chart_component.md)
-    * Charts with the [secondary axis](#Configure-axes)
+    * Charts with the [secondary axis](#configure-axes)
 * To display the total contribution of each measure, enable `config.stackMeasures`.
     * For area charts, `config.stackMeasures` is enabled by default.
     * For bar charts, column charts, and charts with the secondary axis, `config.stackMeasures` is ignored when the chart has only one measure.
 * To display the percentage contribution of each measure, enable `config.stackMeasuresToPercent`.
     * If both `config.stackMeasuresToPercent` and `config.stackMeasures` are present, `config.stackMeasuresToPercent` overwrites `config.stackMeasures`.
-    * For charts with the secondary axis, `config.stackMeasuresToPercent` is applied only to the left axis. 
+    * For charts with the secondary axis, `config.stackMeasuresToPercent` is applied only to the left axis.
 
 
 ```javascript

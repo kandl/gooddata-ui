@@ -55,9 +55,9 @@ This article describes the options for configuring a chart.
 ## Configure colors
 
 To configure colors, use the following options:
-* [Color array (the `colors` property)](#Color-array)
-* [Custom color palette (the `colorPalette` property)](#Custom-color-palette)
-* [Color mapping (the `colorMapping` property)](#Color-mapping)
+* [Color array (the `colors` property)](#color-array)
+* [Custom color palette (the `colorPalette` property)](#custom-color-palette)
+* [Color mapping (the `colorMapping` property)](#color-mapping)
 
 If you have more than one option configured for a visualization, the following rules apply:
 * The `colors` property overrides a custom color palette uploaded through the API.
@@ -103,7 +103,7 @@ import { Visualization } from '@gooddata/react-components';
 
 Within one visualization:
 * The `colors` property overrides a custom color palette uploaded through the API.
-* The `colors` property can be overriden by the [`colorPalette` property](#Custom-color-palette) or the [`colorMapping` property](#Color-mapping).
+* The `colors` property can be overriden by the [`colorPalette` property](#custom-color-palette) or the [`colorMapping` property](#color-mapping).
 
 ### Custom color palette
 

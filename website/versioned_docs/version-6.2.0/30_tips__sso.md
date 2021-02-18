@@ -17,7 +17,7 @@ Before you start, verify that your site meets the following requirements:
     If CORS is not set up, contact [GoodData Support](https://support.gooddata.com/hc/en-us/requests/new?ticket_form_id=582387) and request them to set up CORS and whitelist the URL where your analytical application runs in the CORS settings. Optionally, ask them to enable cross-origin redirects to sites allowed by your CORS settings.
 * All your users have a GoodData account and have access to your GoodData project.
 
-    If some users do not have a GoodData account or do not have access to the project, see [Grant users access to your project](#Grant-users-access-to-your-project).
+    If some users do not have a GoodData account or do not have access to the project, see [Grant users access to your project](#grant-users-access-to-your-project).
 
 ## Implementing authentication
 Choose the use case depending on whether SSO is implemented on your site.
@@ -34,7 +34,7 @@ This is how authentication process works:
 4. The GoodData platform verifies whether the application is allowed and redirects the user to the analytical application.
 
 ### SSO is not implemented on your site
-You do not have to perform any steps for authentication to start working. It is automatically enabled as long as the [prerequisites](#Prerequisites) are met.
+You do not have to perform any steps for authentication to start working. It is automatically enabled as long as the [prerequisites](#prerequisites) are met.
 
 This is how authentication process works:
 1. The user goes to the URL where your analytical application runs. For example:

@@ -379,7 +379,7 @@ You can omit the `columnWidths` prop completely. It has the same effect as speci
 You can configure the following settings:
 * **Totals** and **subtotals**. If you enable the subtotals menu but disable totals, subtotals will be disabled too.
 * **Row grouping**. See [Grouping](#grouping).
-* **Separators** used when formatting numbers. See [Change a separator in the number format](15_props__chart_config.md#Change-a-separator-in-the-number-format).
+* **Separators** used when formatting numbers. See [Change a separator in the number format](15_props__chart_config.md#change-a-separator-in-the-number-format).
 * **Maximum height**. See [Maximum height](#maximum-height).
 * **Column width resizing**. See [Column width resizing](#column-width-resizing).
 

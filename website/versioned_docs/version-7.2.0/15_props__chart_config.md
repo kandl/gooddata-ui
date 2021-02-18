@@ -85,9 +85,9 @@ import { Visualization } from '@gooddata/react-components';
 ## Configure colors
 
 To configure colors, use the following options:
-* [Color array (the `colors` property)](#Color-array)
-* [Custom color palette (the `colorPalette` property)](#Custom-color-palette)
-* [Color mapping (the `colorMapping` property)](#Color-mapping)
+* [Color array (the `colors` property)](#color-array)
+* [Custom color palette (the `colorPalette` property)](#custom-color-palette)
+* [Color mapping (the `colorMapping` property)](#color-mapping)
 
 If you have more than one option configured for a visualization, the following rules apply:
 * The `colors` property overrides a custom color palette uploaded through the API.
@@ -133,7 +133,7 @@ import { Visualization } from '@gooddata/react-components';
 
 Within one visualization:
 * The `colors` property overrides a custom color palette uploaded through the API.
-* The `colors` property can be overriden by the [`colorPalette` property](#Custom-color-palette) or the [`colorMapping` property](#Color-mapping).
+* The `colors` property can be overriden by the [`colorPalette` property](#custom-color-palette) or the [`colorMapping` property](#color-mapping).
 
 ### Custom color palette
 
@@ -282,7 +282,7 @@ The properties listed in this section are specific to the **X** axis. To get the
 * To show measures on a secondary axis, set `config.secondary_xaxis.measures` to the measures that you want to display. If `config.secondary_xaxis.measures` is not set, all measures are displayed on the main axis by default.
 * To hide the axis name, set `config.xaxis.name.visible` to `false`. If not set, it defaults to `true` (the axis name is visible).
 * To set the axis name position, set `config.xaxis.name.position` to one of the possible values: `low`, `middle`, `high`.
-    
+
     **NOTE:** If the axis represents more than one attribute/measure, the `config.xaxis.name.visible` and `config.xaxis.name.position` properties are both ignored, and the axis name is hidden.
 
 ```javascript
@@ -345,15 +345,15 @@ import { Visualization } from '@gooddata/react-components';
     * [Bar charts](10_vis__bar_chart_component.md)
     * [Column charts](10_vis__column_chart_component.md)
     * [Combo charts](10_vis__combo_chart_component.md)
-    
+
          **NOTE:** In combo charts using column or area charts, stacking is applied only to the measures shown on the left axis.
-    * Charts with the [secondary axis](#Configure-axes)
+    * Charts with the [secondary axis](#configure-axes)
 * To display the total contribution of each measure, enable `config.stackMeasures`.
     * For area charts, `config.stackMeasures` is enabled by default.
     * For bar charts, column charts, and charts with the secondary axis, `config.stackMeasures` is ignored when the chart has only one measure.
 * To display the percentage contribution of each measure, enable `config.stackMeasuresToPercent`.
     * If both `config.stackMeasuresToPercent` and `config.stackMeasures` are present, `config.stackMeasuresToPercent` overwrites `config.stackMeasures`.
-    * For charts with the secondary axis, `config.stackMeasuresToPercent` is applied only to the left axis. 
+    * For charts with the secondary axis, `config.stackMeasuresToPercent` is applied only to the left axis.
 
 ```javascript
 import { Visualization } from '@gooddata/react-components';

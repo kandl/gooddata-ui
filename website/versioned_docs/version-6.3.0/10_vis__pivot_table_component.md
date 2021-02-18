@@ -200,7 +200,7 @@ To avoid this gap, specify the maximum height of the table using the `maxHeight`
 ## Configuration menu
 
 You can configure the following settings:
-* Separators used when formatting numbers. See [Change a separator in the number format](15_props__chart_config.md#Change-a-separator-in-the-number-format).
+* Separators used when formatting numbers. See [Change a separator in the number format](15_props__chart_config.md#change-a-separator-in-the-number-format).
 * Menu items. Currently, only the totals are supported.
 * Maximum height. See [Maximum height](#maximum-height).
 
@@ -238,7 +238,7 @@ const config = {
 | filters | false | [Filter[]](30_tips__filter_visual_components.md) | An array of filter definitions |
 | config | false | [ConfigObject](#configuration-menu) | The configuration object |
 | sortBy | false | [SortItem[]](50_custom__result.md#sorting) | An array of sort definitions |
-| groupRows | false | boolean | Specifies whether [grouping of the same values in attribute columns](#grouping) is disabled (`false`; default) or enabled (`true`). | 
+| groupRows | false | boolean | Specifies whether [grouping of the same values in attribute columns](#grouping) is disabled (`false`; default) or enabled (`true`). |
 | locale | false | string | The localization of the table. Defaults to `en-US`. For other languages, see the [full list of available localizations](https://github.com/gooddata/gooddata-react-components/tree/master/src/translations). |
 | drillableItems | false | [DrillableItem[]](15_props__drillable_item.md) | An array of points and attribute values to be drillable. |
 | sdk | false | SDK | A configuration object where you can define a custom domain and other API options |

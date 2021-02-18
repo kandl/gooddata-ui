@@ -107,7 +107,7 @@ If you want to use your own custom button for toggling the filter dropdown, use 
 
 ![Custom button](assets/ranking_filter_custom_button.png "Custom button")
 
-The component has all the same properties as the Ranking Filter component (see [Properties](#Properties)) with the following exceptions:
+The component has all the same properties as the Ranking Filter component (see [Properties](#properties)) with the following exceptions:
 * The `buttonTitle` property is irrelevant for the Ranking Filter Dropdown component.
 * The `onCancel` property is mandatory for the Ranking Filter Dropdown component, because it is supposed to be used to hide the dropdown.
 * The Ranking Filter Dropdown component has one additional property, `anchorEl`. This optional property specifies the element that the dropdown is aligned to, which is typically your toggle button. The property can be an event target or a string and defaults to `"body"`.
