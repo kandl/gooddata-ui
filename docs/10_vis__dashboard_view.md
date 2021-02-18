@@ -42,6 +42,7 @@ If you want to add some filters to the filters already specified on the dashboar
 TODO add DashboardViewWithMergedFilters link
 
 For more information about the filters themselves, see [Filter Visual Components](30_tips__filter_visual_components.md).
+Alternatively, you can pass filters specified using the [`FilterContextItem`](https://github.com/gooddata/gooddata-ui-sdk/blob/6ba2ed93163b830a6a0f03437861ac9ef1d423be/libs/sdk-backend-spi/src/workspace/dashboards/filterContext.ts#L133) type. The main difference between this and the standard filters is that FilterContextItem date filters do not specify a date dimension and so are applied on all the date dimensions (this is what the KPI Dashboards date filter is doing).
 
 **NOTE**: There is currently a limitation on the attribute filters: you can only use URIs to identify the attribute elements.
 
@@ -82,6 +83,36 @@ You can allow users to create new [Scheduled emails](https://help.gooddata.com/d
 
 By default, the Scheduled emails created this way will be filtered by the filters passed in the `filters` prop if specified (see [Filters](#filters)) or fall back to the filters set up on the dashboard in KPI Dashboards. If you would prefer the Scheduled email to always use the filters that were set on the dashboard in KPI Dashboards, set the `applyFiltersToScheduledMail` to `false` (defaults to `true`).
 
+Here is a simple example of how to handle the Scheduled emails dialog.
+
+```jsx
+import React, { useState } from "react";
+import { DashboardView } from "@gooddata/sdk-ui-ext";
+import "@gooddata/sdk-ui-ext/styles/css/main.css";
+
+const DashboardViewWithEmails = () => {
+    const [isEmailDialogOpen, setIsEmailDialogOpen] = useState(false);
+    return (
+        <>
+            <button onClick={() => setIsEmailDialogOpen(true)}>Open Schedule Email Dialog</button>
+            <DashboardView
+                dashboard="dashboard-id"
+                isScheduledMailDialogVisible={isEmailDialogOpen}
+                onScheduledMailDialogCancel={() => setIsEmailDialogOpen(false)}
+                onScheduledMailSubmitSuccess={() => {
+                    alert("Scheduled email scheduled successfully");
+                    setIsEmailDialogOpen(false);
+                }}
+                onScheduledMailSubmitError={() => {
+                    alert("Scheduled email error");
+                    setIsEmailDialogOpen(false);
+                }}
+            />
+        </>
+    );
+};
+```
+
 ## KPI Alerts
 
 TODO help permalink
@@ -91,7 +122,7 @@ The Alerts will use the filters in the `filters` prop if provided (see [Filters]
 
 ## Read-only mode
 
-By default, DashboardView will allow users with appropriate permissions to create KPI Alerts and Scheduled emails. If you do not want this, you can set the `isReadonly` prop to `true` (defaults to `false`). This will completely disable the KPI Alerts adn Scheduled emails features.
+By default, DashboardView will allow users with appropriate permissions to create KPI Alerts and Scheduled emails. If you do not want this, you can set the `isReadonly` prop to `true` (defaults to `false`). This will completely disable the KPI Alerts and Scheduled emails features.
 
 ## Customizations
 
@@ -101,7 +132,11 @@ DashboardView provides several mechanisms to facilitate its integration into you
 
 You can use the `onDashboardLoaded` callback to get all the information about the dashboard object and any KPI Alerts set on it for the given user. This includes also information about any filters set up on the dashboard (so that you can initialize any filter UI you might have accordingly).
 
+You can use the `filters` property to replace the filters of the dashboard so that you can create a custom filters UI for your application.
+
 The `onFiltersChange` callback is called whenever a widget inside the DashboardView requests that the filters be changed (this can happen in case the user opens a KPI Alert which was created using a different filters than those currently used and wishes to use the filters that were active when the KPI Alert was created).
+
+The `onDrill` callback can be used to detect and react to any drill events happening inside the DashboardView.
 
 ## Caching
 
@@ -118,12 +153,10 @@ clearDashboardViewCaches();
 
 ## Properties
 
-TODO links to IDashboardFilter and FilterContextItem
-
 | Name                         | Required? | Type                                             | Description                                                                                                                                       |
 | :--------------------------- | :-------- | :----------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
 | dashboard                    | true      | ObjRef or string                                 | Reference to the dashboard to render                                                                                                              |
-| filters                      | false     | Array<IDashboardFilter &#124; FilterContextItem> | Filters to use for the dashboard                                                                                                                  |
+| filters                      | false     | Array<IDashboardFilter &#124; FilterContextItem> | Filters to use for the dashboard (see [Filters](#filters))                                                                                        |
 | onFiltersChange              | false     | Function                                         | Called when the filters should be changed (see [Integration with your application](#integration-with-your-application))                           |
 | config                       | false     | IDashboardConfig                                 | Configuration object for the visualizations (see [Configuration](#configuration))                                                                 |
 | drillableItems               | false     | [IDrillableItem[]](15_props__drillable_item.md)  | An array of points and attribute values to be drillable                                                                                           |
@@ -140,5 +173,5 @@ TODO links to IDashboardFilter and FilterContextItem
 | onScheduledMailDialogCancel  | false     | Function                                         | Called when the user closes Scheduled email dialog                                                                                                |
 | onScheduledMailSubmitSuccess | false     | Function                                         | Called when the Scheduled email was successfully created                                                                                          |
 | onScheduledMailSubmitError   | false     | Function                                         | Called when creating of the Scheduled email fails                                                                                                 |
-| isReadOnly                   | false     | boolean                                          | Specifies if the [Read-only mode](#read-only-mode) is enabled                                                                                     |
+| isReadOnly                   | false     | boolean                                          | Specifies if the [Read-only mode](#read-only-mode) is enabled (defaults to `false`)                                                               |
 | TODO customization props     |           |                                                  |                                                                                                                                                   |
