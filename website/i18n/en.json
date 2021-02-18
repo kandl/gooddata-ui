@@ -209,6 +209,10 @@
         "title": "Create Header Predicates",
         "sidebar_label": "Create Header Predicates"
       },
+      "embed_dashboard": {
+        "title": "Embed a Dashboard Created in KPI Dashboards",
+        "sidebar_label": "Embed a Dashboard Created in KPI Dashboards"
+      },
       "ht_embed_visualization": {
         "title": "Embed an Insight Created in Analytical Designer",
         "sidebar_label": "Embed an Insight Created in Analytical Designer"

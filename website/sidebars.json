@@ -70,6 +70,7 @@
     ],
     "Development Tips": [
       "ht_embed_visualization",
+      "embed_dashboard",
       "sso",
       "cors",
       "table_totals",
