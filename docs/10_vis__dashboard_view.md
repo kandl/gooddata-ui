@@ -147,6 +147,8 @@ The `onFiltersChange` callback is called whenever a widget inside the DashboardV
 
 The `onDrill` callback can be used to detect and react to any drill events happening inside the DashboardView.
 
+There is also an example of how to emulate edit mode in [Embed a Dashboard Created in KPI Dashboards](30_tips__embed_dashboard.md#edit-mode).
+
 ## Caching
 
 To properly render the referenced dashboards and the visualizations in it, the DashboardView component needs additional information from the GoodData platform. This information is usually static. To minimize the number of redundant requests and reduce the rendering time, some static information (such as the list of visualization classes, the color palette, or feature flags for each project) is cached for all DashboardView components in the same application.
