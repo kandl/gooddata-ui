@@ -5,6 +5,10 @@ copyright: (C) 2007-2018 GoodData Corporation
 id: dashboard_view_component
 ---
 
+> **The DashboardView component is in the beta stage.**
+>
+> The component may be changed in future releases, even in a backward incompatible way.
+
 The **DashboardView component** is a generic component that renders dashboards created and saved by KPI Dashboards.
 It allows you to embed the dashboard natively in React _in view mode_ (similarly to [InsightView](10_vis__insight_view.md) for visualizations).
 
@@ -12,9 +16,7 @@ It also provides mechanisms to allow you to integrate it with the rest of your a
 For example, you can provide your custom filtering UI (see [Integration with your application](#integration-with-your-application)).
 The users with the appropriate permissions can also set [KPI Alerts](#kpi-alerts) and create [Scheduled emails](#scheduled-emails) (unless you enable [Read-only mode](#read-only-mode)).
 
-You can also customize the way the dashboard is rendered – you can alter the layout and change the way particular widgets are rendered and more (see [Customizations](#customizations)).
-
-**NOTE**: Any customizations made to the dashboard rendering will not be reflected in PDF exports and emails.
+You can also customize the way the dashboard is rendered – you can alter the layout and change the way particular widgets are rendered (see [Customizations](#customizations)).
 
 ## Structure
 
@@ -22,9 +24,7 @@ You can also customize the way the dashboard is rendered – you can alter the l
 import "@gooddata/sdk-ui-ext/styles/css/main.css";
 import { DashboardView } from "@gooddata/sdk-ui-ext";
 
-<div style={{ height: 400, width: 600 }}>
-    <DashboardView dashboard="<visualization-identifier>" />
-</div>;
+<DashboardView dashboard="<dashboard-identifier>" />;
 ```
 
 ```jsx
@@ -32,9 +32,7 @@ import "@gooddata/sdk-ui-ext/styles/css/main.css";
 import { DashboardView } from "@gooddata/sdk-ui-ext";
 import { uriRef } from "@gooddata/sdk-model";
 
-<div style={{ height: 400, width: 600 }}>
-    <DashboardView dashboard={uriRef("<visualization-uri>")} />
-</div>;
+<DashboardView dashboard={uriRef("<dashboard-uri>")} />;
 ```
 
 ## Filters
@@ -53,7 +51,7 @@ TODO add DashboardViewWithMergedFilters link
 For more information about the filters themselves, see [Filter Visual Components](30_tips__filter_visual_components.md).
 Alternatively, you can pass filters specified using the [`FilterContextItem`](https://github.com/gooddata/gooddata-ui-sdk/blob/6ba2ed93163b830a6a0f03437861ac9ef1d423be/libs/sdk-backend-spi/src/workspace/dashboards/filterContext.ts#L133) type. The main difference between this and the standard filters is that FilterContextItem date filters do not specify a date dimension and so are applied on all the date dimensions (this is what the KPI Dashboards date filter is doing).
 
-**NOTE**: There is currently a limitation on the attribute filters: you can only use URIs to identify the attribute elements.
+> **NOTE**: There is currently a limitation on the attribute filters: you can only use URIs to identify the attribute elements.
 
 ## Theming
 
@@ -131,9 +129,37 @@ The Alerts will use the filters in the `filters` prop if provided (see [Filters]
 
 ## Read-only mode
 
-By default, DashboardView will allow users with appropriate permissions to create KPI Alerts and Scheduled emails. If you do not want this, you can set the `isReadonly` prop to `true` (defaults to `false`). This will completely disable the KPI Alerts and Scheduled emails features.
+By default, DashboardView will allow users with appropriate permissions to create KPI Alerts and Scheduled emails. If you do not want this, you can set the `isReadonly` prop to `true` (defaults to `false`). This will completely disable the [KPI Alerts](#kpi-alerts) and [Scheduled emails](#scheduled-emails) features of DashboardView.
 
 ## Customizations
+
+> **NOTE:** All the customizations described in this section are effective only for the given DashboardView. They will _not_ take effect in neither Scheduled emails, PDF exports nor emails coming from KPI Alerts.
+
+When using DashboardView, you can customize the way individual dashboard widgets are rendered. You can do that by providing a [render prop](https://reactjs.org/docs/render-props.html) to the `widgetRenderer` prop.
+It should return a piece of JSX representing the widget. It will be called with an object containing the following properties:
+
+| Name             | Type                             | Description                                                                                                                |
+| :--------------- | :------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| widget           | IWidget                          | The information about the widget as specified in the dashboard                                                             |
+| renderedWidget   | ReactElement                     | Widget as rendered by the default logic. You can use it to opt-out of customizations for a given widget by returning this. |
+| insight          | IInsight or undefined            | Insight object relevant to the widget (if the widget is not a KPI).                                                        |
+| alert            | IWidgetAlert or undefined        | Widget alert relevant to the widget (if the widget is a KPI and the user has some alert set).                              |
+| filters          | FilterContextItem[] or undefined | Sanitized filters provided to the `filters` prop (if any)                                                                  |
+| predicates       | IWidgetPredicates                | A set of [predicates](#predicates) provided to help you choose widgets for custom rendering                                |
+| ErrorComponent   | Component                        | A component to be rendered if the widget is in error state (see [ErrorComponent](15_props__error_component.md))            |
+| LoadingComponent | Component                        | A component to be rendered if the widget is in loading state (see [LoadingComponent](15_props__loading_component.md))      |
+
+For an example see TODO link to CustomDashboardView example.
+
+### Predicates
+
+The `predicates` property of the `widgetRenderer` only parameter contains a set of convenience functions that can help you decide which widgets you want to render which way. These are
+
+-   `isWidgetWithRef(ref)` – to match a particular widget
+-   `isWidgetWithInsightRef(ref)` – to match widgets with a particular insight
+-   `isWidgetWithInsightType(type)` – to match widgets with insights with a particular visualization type
+-   `isWidgetWithKpiRef(ref)` – to match widgets with a particular KPI
+-   `isWidgetWithKpiType(comparisonType)` – to match widgets with KPI of a certain comparison type (e.g. Previous Period)
 
 ## Integration with your application
 
@@ -185,4 +211,4 @@ clearDashboardViewCaches();
 | onScheduledMailSubmitSuccess | false     | Function                                         | Called when the Scheduled email was successfully created                                                                                          |
 | onScheduledMailSubmitError   | false     | Function                                         | Called when creating of the Scheduled email fails                                                                                                 |
 | isReadOnly                   | false     | boolean                                          | Specifies if the [Read-only mode](#read-only-mode) is enabled (defaults to `false`)                                                               |
-| TODO customization props     |           |                                                  |                                                                                                                                                   |
+| widgetRenderer               | false     | Function                                         | Render prop to override rendering of individual widgets (see [Customizations](#customizations))                                                   |
