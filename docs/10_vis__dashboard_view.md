@@ -79,9 +79,7 @@ You can also specify additional drillable items using the `drillableItems` prop 
 
 ## Scheduled emails
 
-TODO help permalink
-
-You can allow users to create new [Scheduled emails](https://help.gooddata.com/doc/en/reporting-and-dashboards/kpi-dashboards/schedule-automatic-emailing-of-kpi-dashboards) for the dashboard. You can display the dialog for setting up the Scheduled email by setting the `isScheduledMailDialogVisible` to true. There are also other props you can use to interact with the dialog:
+You can allow users to create new [Scheduled emails](https://help.gooddata.com/pages/viewpage.action?pageId=66202520) for the dashboard. You can display the dialog for setting up the Scheduled email by setting the `isScheduledMailDialogVisible` to true. There are also other props you can use to interact with the dialog:
 
 -   `onScheduledMailDialogSubmit` – called when the user confirms the Scheduled email creation. The callback will receive the Scheduled email definition the user submitted as a parameter.
 -   `onScheduledMailDialogCancel` – called when the user cancels or closes the Scheduled email dialog
@@ -122,9 +120,7 @@ const DashboardViewWithEmails = () => {
 
 ## KPI Alerts
 
-TODO help permalink
-
-DashboardView supports displaying, creating, editing and deleting of [KPI Alerts](https://help.gooddata.com/doc/en/reporting-and-dashboards/kpi-dashboards/add-an-alert-to-a-kpi).
+DashboardView supports displaying, creating, editing and deleting of [KPI Alerts](https://help.gooddata.com/pages/viewpage.action?pageId=34341718).
 The Alerts will use the filters in the `filters` prop if provided (see [Filters](#filters)), or fall back to the filters set up on the dashboard in KPI Dashboards.
 
 ## Read-only mode
