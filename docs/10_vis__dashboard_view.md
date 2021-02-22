@@ -157,6 +157,15 @@ The `predicates` property of the `widgetRenderer` only parameter contains a set 
 -   `isWidgetWithKpiRef(ref)` – to match widgets with a particular KPI
 -   `isWidgetWithKpiType(comparisonType)` – to match widgets with KPI of a certain comparison type (e.g. Previous Period)
 
+### Auxiliary hooks
+
+To make implementation of the custom renderers as easy as possible, we provide some convenience hooks that you can use to obtain the exactly same data the default renderer would:
+
+-   `useDashboardWidgetExecution` – creates a PreparedExecution for a given widget
+-   `useDataView` - executes a given PreparedExecution and returns the resulting data
+
+See TODO examples link for an example how to use those.
+
 ## Integration with your application
 
 DashboardView provides several mechanisms to facilitate its integration into your application.
@@ -168,6 +177,8 @@ You can use the `filters` property to replace the filters of the dashboard so th
 The `onFiltersChange` callback is called whenever a widget inside the DashboardView requests that the filters be changed (this can happen in case the user opens a KPI Alert which was created using a different filters than those currently used and wishes to use the filters that were active when the KPI Alert was created).
 
 The `onDrill` callback can be used to detect and react to any drill events happening inside the DashboardView.
+
+The `useDashboardPdfExporter` hook can be used to perform an export of a given dashboard to PDF see TODO link to examples (note that this will not reflect any [customizations](#customizations) you may have made).
 
 There is also an example of how to emulate edit mode in [Embed a Dashboard Created in KPI Dashboards](30_tips__embed_dashboard.md#edit-mode).
 
