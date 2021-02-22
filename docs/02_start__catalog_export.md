@@ -108,7 +108,7 @@ In addition, the existing catalog file is renamed to `catalogue.json.bak`, and t
 
 `@gooddata/catalog-export` exports only data from a project \(production data\).
 
-If you [uploaded data to your project from a file](https://help.gooddata.com/display/doc/Add+Data+from+a+File+to+a+Project), the data from the file is added as a separate dataset \(non-production data\), and `@gooddata/catalog-export` cannot retrieve it. This also includes any measures that were created using the data from that separate dataset.
+If you [uploaded data to your project from a file](https://help.gooddata.com/pages/viewpage.action?pageId=34341714), the data from the file is added as a separate dataset \(non-production data\), and `@gooddata/catalog-export` cannot retrieve it. This also includes any measures that were created using the data from that separate dataset.
 
 ### Example
 

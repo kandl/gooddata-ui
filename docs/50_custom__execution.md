@@ -53,7 +53,7 @@ You can optionally override the `localIdentifier` and also the title of the attr
 ```
 
 All attributes are defined using their `displayForm` identifiers. This assures that you application can work on top of
-different workspaces which have the same logical data model (LDM). For more information, see [Determine the Attribute Value ID](https://help.gooddata.com/display/doc/Determine+the+Attribute+Value+ID).
+different workspaces which have the same logical data model (LDM). For more information, see [Determine the Attribute Value ID](https://help.gooddata.com/pages/viewpage.action?pageId=34341344).
 
 ## Filter
 

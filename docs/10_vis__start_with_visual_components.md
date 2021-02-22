@@ -32,7 +32,7 @@ The component props can be of the following types:
 
 The style props define style and interaction of a visualization. For more information, see the articles in the Properties section.
 
-The data props pass measures and attributes. These props are similar to the drag and drop sections in [Analytical Designer](https://help.gooddata.com/display/doc/Analytical+Designer) and use similar names such as "View by", "Stack by" and so on.
+The data props pass measures and attributes. These props are similar to the drag and drop sections in [Analytical Designer](https://help.gooddata.com/pages/viewpage.action?pageId=34341516) and use similar names such as "View by", "Stack by" and so on.
 A data prop can be a single value or an array of either the `IMeasure` or `IAttribute` type, which is passed to the component as an object literal.
 
 You can find more information about data props in the articles about individual components in the Visual Components section.

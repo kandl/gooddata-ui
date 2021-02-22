@@ -16,7 +16,7 @@ You can display rows with aggregated measure data in the Pivot Table component u
 | Minimum | Smallest value |
 | Average | Average value |
 | Median | Middle value |
-| Rollup | Sum (or another type of aggregation) of pre-aggregated (raw) values; see [Aggregate Table Data](https://help.gooddata.com/display/doc/Aggregate+Table+Data) |
+| Rollup | Sum (or another type of aggregation) of pre-aggregated (raw) values; see [Aggregate Table Data](https://help.gooddata.com/pages/viewpage.action?pageId=34341547) |
 
 > **NOTE:** A rollup total is not supported in visualizations with [measure value filters](30_tips__filter_visual_components.md#filter-by-a-measure-value). Such visualizations are not rendered, and the error message is shown instead.
 

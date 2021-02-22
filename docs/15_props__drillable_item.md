@@ -5,7 +5,7 @@ copyright: (C) 2007-2018 GoodData Corporation
 id: drillable_item
 ---
 
-You can enable eventing and drilling in a visualization. Drilling is the process of "zooming in" on a single measure value by filtering out all other data and breaking that value across a new attribute of interest (see [Drilling into Reports](https://help.gooddata.com/display/doc/Drilling+into+Reports)).
+You can enable eventing and drilling in a visualization. Drilling is the process of "zooming in" on a single measure value by filtering out all other data and breaking that value across a new attribute of interest (see [Drilling into Reports](https://help.gooddata.com/pages/viewpage.action?pageId=34341082)).
 
 To add drilling, use function predicates.
 
@@ -17,7 +17,7 @@ Drillable items can consist of the following entities:
 * Measures
 * Attribute `displayForm`s that are defined by their identifier or URI
 
-    *displayForm*, or attribute label, is a different means of representing an attribute. For example, the `Name` attribute might have labels for `Firstname` and `Lastname`. For more information, see [Attributes in Logical Data Models](https://help.gooddata.com/display/doc/Attributes+in+Logical+Data+Models).
+    *displayForm*, or attribute label, is a different means of representing an attribute. For example, the `Name` attribute might have labels for `Firstname` and `Lastname`. For more information, see [Attributes in Logical Data Models](https://help.gooddata.com/pages/viewpage.action?pageId=71867295).
 * Attribute values defined by their URI
 
 Visualization points that intersect any defined measures, attributes, or attribute values become drillable and will emit events when interacted with.
@@ -120,4 +120,4 @@ user clicked.
 
 ## Additional information
 
-For more information, see [Setting up Events for Drilling in Embedded Analytical Designer and KPI Dashboards](https://help.gooddata.com/display/doc/Setting+up+Events+for+Drilling+in+Embedded+Analytical+Designer+and+KPI+Dashboards).
+For more information, see [Setting up Events for Drilling in Embedded Analytical Designer and KPI Dashboards](https://help.gooddata.com/pages/viewpage.action?pageId=34340938).

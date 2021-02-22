@@ -22,11 +22,11 @@ Before you start, verify that your site meets the following requirements:
 Choose the use case depending on whether SSO is implemented on your site.
 
 ### SSO is implemented on your site
-GoodData supports SAML 2.0-based and PGP-based authentication. For more information, see [Single Sign-On Overview](https://help.gooddata.com/display/doc/Single+Sign-On+Overview).
+GoodData supports SAML 2.0-based and PGP-based authentication. For more information, see [Single Sign-On Overview](https://help.gooddata.com/pages/viewpage.action?pageId=34341409).
 
 Setting up authentication depends on what type of SSO is implemented on your site.
 
-* If you use the [GoodData PGP SSO](https://help.gooddata.com/display/doc/GoodData+PGP+Single+Sign-On) implementation, you can use the `loginSSO` method from [`@gooddata/api-client-bear`](https://github.com/gooddata/gooddata-ui-sdk/tree/master/libs/api-client-bear). Note that although this method requires a mandatory parameter of `targetUrl`, this parameter is used very rarely in the context of GoodData.UI, because in a typical scenario there is no need to redirect a user to any GoodData URL. But as this parameter is mandatory, set it to an arbitrary relative URL (for example, `/`).
+* If you use the [GoodData PGP SSO](https://help.gooddata.com/pages/viewpage.action?pageId=34341459) implementation, you can use the `loginSSO` method from [`@gooddata/api-client-bear`](https://github.com/gooddata/gooddata-ui-sdk/tree/master/libs/api-client-bear). Note that although this method requires a mandatory parameter of `targetUrl`, this parameter is used very rarely in the context of GoodData.UI, because in a typical scenario there is no need to redirect a user to any GoodData URL. But as this parameter is mandatory, set it to an arbitrary relative URL (for example, `/`).
 
     ```javascript
     import { factory } from "@gooddata/api-client-bear";
@@ -48,7 +48,7 @@ Setting up authentication depends on what type of SSO is implemented on your sit
       });
     ```
 
-* If you use a [SAML SSO](https://help.gooddata.com/display/doc/SAML+SSO+with+GoodData) implementation with the **Service Provider-initiated** scenario, obtain the value of the `loginUrl` parameter from `/gdc/account/samlrequest` and use this URL to get logged in.
+* If you use a [SAML SSO](https://help.gooddata.com/pages/viewpage.action?pageId=34341408) implementation with the **Service Provider-initiated** scenario, obtain the value of the `loginUrl` parameter from `/gdc/account/samlrequest` and use this URL to get logged in.
 
     `/gdc/account/samlrequest` also contains the `relayState` parameter that should point to the URL where your application runs (the page where the user is redirected after a successful login).
 
@@ -84,7 +84,7 @@ Setting up authentication depends on what type of SSO is implemented on your sit
 
     **NOTE:** Service Provider-initiated SSO cannot be used if you are using a development proxy due to proxy limitations.
 
-* If you use a [SAML SSO](https://help.gooddata.com/display/doc/SAML+SSO+with+GoodData) implementation with the **Identity Provider-initiated** scenario, make sure that login is done via your Identity Provider (Okta, Auth0 and so on) and the login code in your app queries the Identity Provider’s API.
+* If you use a [SAML SSO](https://help.gooddata.com/pages/viewpage.action?pageId=34341408) implementation with the **Identity Provider-initiated** scenario, make sure that login is done via your Identity Provider (Okta, Auth0 and so on) and the login code in your app queries the Identity Provider’s API.
 
 ### SSO is not implemented on your site
 You do not have to perform any steps for authentication to start working. It is automatically enabled as long as the [prerequisites](#prerequisites) are met.
@@ -129,7 +129,7 @@ To do so, follow these steps:
 
     `"invitationWelcomePage": "https://my.app.com"`
 
-    For more information, see [Configure Various Features via Platform Settings](https://help.gooddata.com/display/doc/Configure+Various+Features+via+Platform+Settings) and the [API for updating the platform settings](https://help.gooddata.com/display/doc/API+Reference#/reference/hierarchical-configuration).
-2. Invite the users to your GoodData project via the [GoodData Portal](https://help.gooddata.com/display/doc/Managing+Users+in+Projects).
+    For more information, see [Configure Various Features via Platform Settings](https://help.gooddata.com/pages/viewpage.action?pageId=35361159) and the [API for updating the platform settings](https://help.gooddata.com/display/doc/API+Reference#/reference/hierarchical-configuration).
+2. Invite the users to your GoodData project via the [GoodData Portal](https://help.gooddata.com/pages/viewpage.action?pageId=34341504).
 
     The link in the invitation email will redirect an invited user to the URL where your application runs. The users with no GoodData account will additionally be asked to  create a GoodData account.

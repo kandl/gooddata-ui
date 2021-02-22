@@ -115,13 +115,13 @@ For comparing over a period other than a day, use a [relative date filter](30_ti
 
 If you use [date filters by _weeks_](30_tips__filter_visual_components.md#relative-date-filter) and compare the data to the previous period or the same period of the last year in those filters, you have to enable the GoodData platform to properly process such week filters. To do so, complete the following steps:
 
-1. Switch the version of the [Extensible Analytics Engine](https://help.gooddata.com/display/doc/XAE+-+Extensible+Analytics+Engine) to 3.
+1. Switch the version of the [Extensible Analytics Engine](https://help.gooddata.com/pages/viewpage.action?pageId=34341374) to 3.
 
-    To do so, set the `xae_version` platform setting to 3 (see [Configure Various Features via Platform Settings](https://help.gooddata.com/display/doc/Configure+Various+Features+via+Platform+Settings)).
+    To do so, set the `xae_version` platform setting to 3 (see [Configure Various Features via Platform Settings](https://help.gooddata.com/pages/viewpage.action?pageId=35361159)).
 
 2. Migrate the Date datasets in your project to the `urn:custom_v2:date` date dimension.
 
-    To do so, see "Migrate from a Legacy Date Dimension to urn:custom_v2:date" in [Custom Calendars - Self Service](https://help.gooddata.com/display/doc/Custom+Calendars+-+Self+Service).
+    To do so, see "Migrate from a Legacy Date Dimension to urn:custom_v2:date" in [Custom Calendars - Self Service](https://help.gooddata.com/pages/viewpage.action?pageId=34341297).
 
 ## More examples
 
