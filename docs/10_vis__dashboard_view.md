@@ -99,7 +99,9 @@ const DashboardViewWithEmails = () => {
     const [isEmailDialogOpen, setIsEmailDialogOpen] = useState(false);
     return (
         <>
-            <button onClick={() => setIsEmailDialogOpen(true)}>Open Schedule Email Dialog</button>
+            <button onClick={() => setIsEmailDialogOpen(true)}>
+                Open Schedule Email Dialog
+            </button>
             <DashboardView
                 dashboard="dashboard-id"
                 isScheduledMailDialogVisible={isEmailDialogOpen}
@@ -145,6 +147,8 @@ It should return a piece of JSX representing the widget. It will be called with 
 | ErrorComponent   | Component                        | A component to be rendered if the widget is in error state (see [ErrorComponent](15_props__error_component.md))            |
 | LoadingComponent | Component                        | A component to be rendered if the widget is in loading state (see [LoadingComponent](15_props__loading_component.md))      |
 
+Ensure that your custom widgets are responsive and have height & width set to 100%.
+
 For an example see TODO link to CustomDashboardView example.
 
 ### Predicates
@@ -156,6 +160,7 @@ The `predicates` property of the `widgetRenderer` only parameter contains a set 
 -   `isWidgetWithInsightType(type)` – to match widgets with insights with a particular visualization type
 -   `isWidgetWithKpiRef(ref)` – to match widgets with a particular KPI
 -   `isWidgetWithKpiType(comparisonType)` – to match widgets with KPI of a certain comparison type (e.g. Previous Period)
+-   `isCustomWidget: ()` - to match widgets that are not commonly part of the dashboard (e.g. your custom widgets added in DashboardView `layoutTransform` callback)
 
 ### Auxiliary hooks
 
@@ -165,6 +170,52 @@ To make implementation of the custom renderers as easy as possible, we provide s
 -   `useDataView` - executes a given PreparedExecution and returns the resulting data
 
 See TODO examples link for an example how to use those.
+
+## Layout
+
+You can customize the dashboard layout (e.g. filter/reorder the widgets), or even extend it with you own custom widgets. This is possible via `transformLayout` callback.
+
+The dashboard layout consists of sections. Each section can contain a header with a title and description and a subset of items. Each item consists of a size setting, and data for the widget. The total width of the layout grid is 12 columns, and currently there is no way to change it.
+
+To make layout transformations more convenient, the `transformLayout` callback is called with the layoutBuilder parameter, which provides an interface with commonly needed methods for transformations (add/remove/modify).
+
+```jsx
+import "@gooddata/sdk-ui-ext/styles/css/main.css";
+import { DashboardView } from "@gooddata/sdk-ui-ext";
+import { idRef } from "@gooddata/sdk-model";
+
+<DashboardView
+    dashboard={idRef("<dashboard-id>")}
+    transformLayout={(layoutBuilder) => {
+        // Modify the first layout section
+        layoutBuilder.modifySection(0, (section) =>
+            // Add a full-width item to the section
+            section.addItem({ gridWidth: 12 }, (item) =>
+                // Set custom widget data for the item
+                item.widget("Hello world!")
+            )
+        );
+
+        // Return the layout builder with the transformations applied
+        return layoutBuilder;
+    }}
+    widgetRenderer={({ predicates, customWidget, renderedWidget }) => {
+        if (predicates.isCustomWidget()) {
+            return (
+                // Render the custom widget data
+                <div style={{ height: "100%", width: "100%" }}>
+                    {customWidget}
+                </div>
+            );
+        }
+
+        // Fallback all other widgets to common rendering
+        return renderedWidget;
+    }}
+/>;
+```
+
+TODO: link to advanced customizations
 
 ## Integration with your application
 
@@ -219,3 +270,4 @@ clearDashboardViewCaches();
 | onScheduledMailSubmitError   | false     | Function                                         | Called when creating of the Scheduled email fails                                                                                                 |
 | isReadOnly                   | false     | boolean                                          | Specifies if the [Read-only mode](#read-only-mode) is enabled (defaults to `false`)                                                               |
 | widgetRenderer               | false     | Function                                         | Render prop to override rendering of individual widgets (see [Customizations](#customizations))                                                   |
+| transformLayout              | false     | Function                                         | Callback to transform the dashboard layout (see [Layout](#layout))                                                                                |
